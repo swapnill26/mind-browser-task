@@ -1,6 +1,7 @@
 const Sequelize=require('sequelize');
 const db={}
 
+//Databese Connection Using Sequelize
 const sequelize=new Sequelize('mb',"root","",{
     host:"localhost",
     dialect:'mysql',
@@ -8,12 +9,6 @@ const sequelize=new Sequelize('mb',"root","",{
     define: {
         timestamps: false
     },
-    // pool:{
-    //     max:5,
-    //     mon:0,
-    //     acquire:30000,
-    //     idle:10000
-    // }
 });
 
 db.sequelize=sequelize;

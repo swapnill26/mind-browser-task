@@ -1,6 +1,7 @@
 const Sequelize=require('sequelize');
 const db=require('../connection/connection');
 
+//Schema Defined For Manager
 module.exports=db.sequelize.define(
     'manager',
     {

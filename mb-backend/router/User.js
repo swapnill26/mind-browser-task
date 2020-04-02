@@ -10,6 +10,7 @@ users.use(cors());
 
 process.env.SECRET_KEY='secret';
 
+//Route for Manager Registration
 users.post('/register',(req,res)=>{
     const userData={
         email:req.body.email,
@@ -30,7 +31,6 @@ users.post('/register',(req,res)=>{
             User.create(userData)
                 .then(user=>{
                     res.send('registered')
-                    //res.json({status:manager.email+'registered'})
                 })
                 .catch(err=>{
                     res.send('error:'+err)
@@ -43,6 +43,8 @@ users.post('/register',(req,res)=>{
         res.send('error:'+err)
     })
 })
+
+//Route For Manager Login
 users.post('/login',(req,res)=>{
     console.log(req.body);
     User.findOne({
@@ -69,6 +71,7 @@ users.post('/login',(req,res)=>{
      })
 });
 
+//Route FOr Display Employee List
 users.get('/employee',(req,res)=>{
         Employee.findAll()
         .then(result=>{
@@ -79,6 +82,7 @@ users.get('/employee',(req,res)=>{
         })
 })
 
+//Route FOr Delete Employee
 users.get('/deleteEmp/:emp_id',(req,res)=>{
     Employee.destroy({
         where:{
@@ -90,6 +94,7 @@ users.get('/deleteEmp/:emp_id',(req,res)=>{
     })
 });
 
+//Route FOr Add Employee 
 users.post('/addemployee',(req,res)=>{
         const newEmployee={
             emp_firstname:req.body.employee.first_name,
@@ -108,8 +113,9 @@ users.post('/addemployee',(req,res)=>{
         }) 
 })
 
+
+//Route FOr Update Employee List
 users.post('/updateEmployee',(req,res)=>{       
-    
     Employee.update({
       emp_firstname:req.body.employee.emp_firstname,
       emp_lastname:req.body.employee.emp_lastname,

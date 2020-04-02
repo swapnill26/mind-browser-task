@@ -1,6 +1,7 @@
 const Sequelize=require('sequelize');
 const db=require('../connection/connection');
 
+//Schema Defined For Employee
 var Employee=db.sequelize.define(
     'employee',
     {
